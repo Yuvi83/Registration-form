@@ -11,9 +11,13 @@ const port = process.env.PORT || 3000;
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
 
-mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.wxmyirm.mongodb.net/registrationFormDB`, {
-    serverSelectionTimeoutMS: 5000, 
-});
+mongoose.connect("mongodb://127.0.0.1:27017/thapa")
+    .then(() => {
+        console.log("Connection successful...");
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 
 const registrationSchema = new mongoose.Schema({
     name : String,
